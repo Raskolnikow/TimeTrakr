@@ -33,8 +33,3 @@ function requestFunc(request, response) {
 	console.log('Station connected!!\nMethod: ' + request.url)	
 }
 
-function gitTest(para) {
-
-	return para;
-}
-
