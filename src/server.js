@@ -29,7 +29,7 @@ function startServer(port) {
 */
 function requestFunc(request, response) {
 	response.writeHead(200, {'Content-Type': 'text/html'});
-	response.end('<b>Hello World</b>');
+	response.end('<h1><b>Hello World</b></h1>');
 	console.log('Station connected!!\nMethod: ' + request.url)	
 }
 
