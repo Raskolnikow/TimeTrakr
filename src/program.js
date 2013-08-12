@@ -1,5 +1,5 @@
-document.writeln("Hello World!\n");
-f(2.3, 4.5);
+//document.writeln("Hello World!\n");
+//f(2.3, 4.5);
 
 function f(x, y)
 {

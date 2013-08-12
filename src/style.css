@@ -2,3 +2,9 @@ div.box {
 	border: solid red;
 	border-width: thin;
 }
+
+img {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
