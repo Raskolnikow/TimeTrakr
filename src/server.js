@@ -1,6 +1,8 @@
 // A simple node server
 
 var http = require('http');
+var fs = require('fs');
+var path = require('path');
 
 /* --------------------------------------------------------------- */
 var server;
@@ -13,7 +15,8 @@ startServer(8124);
 /* --------------------------------------------------------------- */
 
 function createServer() {
-	server = http.createServer(requestFunc)
+	server = http.createServer(requestFunc);
+
 }
 
 function startServer(port) {
@@ -21,6 +24,9 @@ function startServer(port) {
 	console.log('Server running at http://127.0.0.1:8124/');
 }
 
+function reportError(err) {
+	console.log(err);
+}
 /*
 	Handles request from a client
 
@@ -28,8 +34,13 @@ function startServer(port) {
 	@para response: http.ServerResponse
 */
 function requestFunc(request, response) {
-	response.writeHead(200, {'Content-Type': 'text/html'});
-	response.end('<h1><b>Hello World</b></h1>');
-	console.log('Station connected!!\nMethod: ' + request.url)	
+	
+	var file = path.normalize('.' + request.url);
+	var rs = fs.createReadStream(file);
+
+	rs.on('error', reportError);
+
+	response.writeHead(200);
+	rs.pipe(response);	
 }
 

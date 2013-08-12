@@ -1,3 +1,4 @@
-.box {
-	b
+div.box {
+	border: solid red;
+	border-width: thin;
 }
