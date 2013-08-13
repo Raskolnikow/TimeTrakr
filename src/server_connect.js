@@ -13,11 +13,12 @@ app.use(connect.logger(':method :req[content-type]'));
 app.use(connect.bodyParser());
 
 app.use(function(req, res) {
-	console.log(JSON.stringify(req.body));
-	req.setEncoding('utf8');
-	var dat = eval("(" + JSON.stringify(req.body) + ")");
-	dat.zufall = Math.floor(Math.random() * 100);
-	console.log(dat.zufall);
+	var dat = {"zufall1": "0","zufall2":"0"};
+
+	//var dat = eval("(" + JSON.stringify(req.body) + ")");
+	dat.zufall1 = Math.floor(Math.random() * 51);
+	dat.zufall2 = Math.floor(Math.random() * 51);
+
 	res.end(JSON.stringify(dat));
 });
 
