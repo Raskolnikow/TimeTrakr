@@ -5,14 +5,14 @@ request.onreadystatechange = function() {
 		if(request.status == 200) {
 			var re = eval("(" + request.responseText + ")");
 
-			document.getElementById("wert").innerHTML = re.hello;
+			document.getElementById("wert").innerHTML = re.zufall;
 		}
 	}
 }
 
 function send() {
-	var wert = Math.random() * 100;
-	var obj = {"hello": wert};
+	//var wert = Math.floor(Math.random() * 100);
+	var obj = {"zufall": "0"};
 
 	request.open('POST', 'http://localhost:8124');	
 	request.setRequestHeader("Content-Type", "application/json", true);
