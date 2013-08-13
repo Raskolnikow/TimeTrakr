@@ -15,7 +15,6 @@ app.use(connect.bodyParser());
 app.use(function(req, res) {
 	var dat = {"zufall1": "0","zufall2":"0"};
 
-	//var dat = eval("(" + JSON.stringify(req.body) + ")");
 	dat.zufall1 = Math.floor(Math.random() * 51);
 	dat.zufall2 = Math.floor(Math.random() * 51);
 

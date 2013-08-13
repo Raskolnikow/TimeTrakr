@@ -23,20 +23,9 @@ request.onreadystatechange = function() {
 }
 
 function send() {
-	//var obj = {"zufall": "0"};
-
 	request.open('POST', 'http://localhost:8124');	
 	request.setRequestHeader("Content-Type", "application/json", true);
-	//request.send(JSON.stringify(obj));
 	request.send(null);
 }
 
 setInterval(send, 5000);
-
-function f(x, y)
-{
-	var point = new Object()
-	point.x = x;
-	point.y = y;
-	document.writeln(point.x);
-}
