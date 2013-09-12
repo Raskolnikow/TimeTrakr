@@ -1,13 +1,26 @@
-div.box {
-	color: red;
+div.frams {
+	text-align: center;
+	outline-color: black;
+	outline-width: thin;
+}
+
+span.big {
+	font-size: 40px;
+}
+
+span.box {
+	color: black;
+	border-color: black;
+	border-width: thin;
+	outline-width: thin;
 }
 
 label.fig {
-	font-size: 50px;
+	font-size: 40px;
 }
 
 label.col {
-	font-size: 50px;
+	font-size: 40px;
 }
 
 img {
