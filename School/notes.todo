@@ -1,0 +1,75 @@
+Part 1 Core JavaScript:
+
+  Chapter 2:
+
+  LITERALS: A literal is a data value that appears directly in a program.
+    12              // The number twelve
+    1.2             // the number one point two
+    "hello world"   // A string of text
+    /javascript/gi  // A "regular expression" literal
+
+    { x:1, y:2 }    // An object initializer
+    [1,2,3,4,5]     // An array initializer
+
+    Literals are an important part of any programming language, because it is impossible to write a program without them.
+
+  Chapter 3:
+
+    JavaScript has three primitive datatypes: numbers, strings, and Boolean.
+    In addition to these, JavaScript supports a composite datatype known as an OBJECT. Objects in Javascript have a dual nature: an object can represent an unordered collection of named values or an ordered collection of numbered values. In latter case, the object is called an ARRAY.
+    Another special kind of object in JavaScript is known as FUNCTION. A function is an object that has executable code associated with it. A function may be invoked to perform some kind of operation.
+
+    JavaScript does not make a distinction btw. integer and floating-point values. JavaScript support 64-bit floating-point format defined by the IEEE 754 standard. When a number appears directly in a JavaScript program, it's called a NUMERIC LITERAL.
+
+    Strings:
+
+      to represent a char in JavaScript one uses a string that has length of 1.
+
+      string.length                       // length of the string
+      last_char = s.charAt(s.length - 1)  // last character
+      s.substring(1,4)                    // extract sec, third,fourth char.
+      s.indexOf('a')                      // index of the first letter "a"
+
+      Strings are not a type of object. Strings are distinct JavaScript datatype.
+
+      Numbers are automatically converted to strings when needed. To convert a number to a string, simply add the empty string to it
+
+        var n_as_string = n + "";
+
+        var n = 17;
+        binary_string = n.toString(2);      // Evaluates to "10001";
+        octal_string = "0" + n.toString(8);  // evaluates to "021"
+        hex_string = "0x" + n.toString(16);  // Evaluates to "0x11"
+
+      When a string is used in a numeric context, it is automatically converted to a number.
+
+        var product = "21" * "2";  // product is the number 42
+
+        Converting a string to a number
+          var number = string_value - 0;
+          var number = Number(string_value);
+
+          parseInt("3 blind mice");    // returns 3
+          parseFloat("3.14 meters");   // returns 3.14
+          parseInt("12.34");           // returns 12
+          parseInt("0xFF");            // return 255
+
+    Functions:
+      Functions are values that can be manipulated by JavaScript code. In Java, functions are only syntactic feature of the language: they can be defined and invoked, but they are not datatypes. The fact that functions are values means that functions can be stored in variables, arrays, and objects, and it means that functions can be passed as arguments to other functions.
+
+      functions literals: JavaScript provides a syntax for deining function literals. A function literal looks like a function definition, except it does not have to have a name. Function literals can appear within oter JavaScript expressions.
+
+      function square(x) { return x*x; }        // function definition
+
+      var square = function(x) { return x*x; }  // function literal
+
+      Function defined in this way are called lambda functions.
+
+      Another way to define a function is with a function constructor Function().
+
+      var square = new Function("x", "return x*x;");
+
+    Objects:
+      
+
+
