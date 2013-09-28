@@ -70,6 +70,135 @@ Part 1 Core JavaScript:
       var square = new Function("x", "return x*x;");
 
     Objects:
-      
+      An object is an collection of named values. To refer to an objects properties use the . notation
+
+        var image = new Object();
+        image.width = 2.0;
+        image.height = 3.124;
+
+      Properties can contain any type of data, including array, functions, and other objects.
+
+      Objects in JS can serve as associative arrays; that is, they can associate arbritary data values with arbitrary strings. To access the properties use the array notation
+
+        image["width"];
+        image["height"];
+
+      Object are created by invoking special CONSTRUCTOR functions.
+
+        var o = new Object();
+        var new = new Date();
+
+      Object literals allows to create an object and specify its properties. An object literal (also called an object initializer) consists of a comma-separated list of colon-separated property/value pairs, all enclosed within curly braces.
+
+        var point = { x:2.3, y:-1.2 };
+
+      The property names in object literals may be strings rather than identifiers.
+
+        var point = { "x_coord": 2.3 };
+
+      When an object is used in a string context, JS calls the toString() method.
+      When an object is used in a numeric context, JS first calls the valueOf() method.
+
+    Arrays:
+      An array is a collection of data values, just as an object is. While each data value contained in an object has a name, each data value in an array has a number, or index. JS does not support multidimensional arrays, except as arrays of arrays. The elements of an array do not all need to be of the same type. Array can be created with the Array() constructor function.
+
+        var a = new Array();
+        a[0] = 1.2;
+        a[1] = "JavaScript";
+        a[2] = true;
+        a[3] = { x:1, y:3 };
+
+        var a = new Array(10);  // Array with 10 elements
+
+      Array can also be created with literals. An array literal (or array initializer) is a comma-separated list of values contained within square brackets.
+
+        var a = [1.2, "JavaScript"k true, { x:1, y:3 }];
+
+        var matrix = [[1,2,3], [4,5,6], [7,8,9]];
+
+        var base = 1024;
+        var table = [base, base+1, base+2, base+3];
+
+        var sparseArray = [1,,,,5];    // three undefined elements
+
+    null & undefined:
+      The JS keyword null is a special value that indicates no value. When a variable holds the value null, you know that it does not contain a valid object, array, number, string, or boolean value.
+      When null is used in a Boolean context, it converts to false, when in numeric context to 0 and in string context to "null".
+
+      undefined is returned when you use either a variable that has been declared but never had a value assigned to it or an object property that does not exist. undefined is not the same as null.
+
+    The Date Object:
+      JS does provide a class of object that represents dates and times and can be used to manipulate this type of data.
+
+        var now = new Date();    // Current date and time.
+        now.toLocalestring();    // Current date/time.
+
+    Regular Exprssions:
+      Regular exprssions provide a rich and powerful syntax for describing textual patterns. Regular expressions are represented in JS by the RegExp object and may be created using the RegExp() constructor. RegExp objects have a literal syntax and can be encoded directly into JS programs.
+
+        /^HTML/
+        /[1-9][0-9]*/
+        /\bjavascript\b/i
+
+    Error Objects:
+      The JS interpreter "throws" an object of one of the error types when a runtime error occurs.
+
+    Primitive Datatype Wrapper Objects:
+      For each primitive datatypes there is a corresponding object class. That is, number, string, and boolean. The classes are String, Number, Boolean. These classes are wrappers around the primitive datatypes. JS automatically converts values from one type to another. When a property or method of a string is accessed, JS internally creates a String wrapper for the string value. If the wrapped string is no longer needed, it is reclaimed by the system.
+
+    By Value Versus by Reference:
+      In JS, as in all programming languages, you can manipulate a data value in three important ways. firs, you can copy it. E.g. you might assign it to a new variable. Second, you can pass it as an argument to a function or method. Third, you can compare it with another value to see wheter the two values are equal.
+
+      There are tow fundametally distinct ways to manipulate data values. These techniques are called by value and by reference.
+      The basic rule in JS is: primitive types are manipulated by value, and reference types are manipulated by reference. Objects are reference types.
+
+      Strings in JS are considered primitive types, therefor they are manipulated by value.
+
+      If a function overwrites a passed reference of a object with a reference to a new object, that modification is not visible outside the function.
+
+      JS strings are intentionally immutabe. That is, there is no JS syntax, method, or property that allows you to change the characters in a string. therefor there is no way to tell wheter strings are passed by value or by reference.
+
+      Strings in JS are compared by value. In other languages strings are reference types and are compared by reference. To compare to strings with each other, a special method or functions has to be called.
+
+  Chapter 4: Variables:
+
+    Variable Typing:
+      JS is a untyped language. The lack op typing allow the system to automatically convert values from one type to another.
+
+    Variable Declaration:
+      Before a variable ca be used, it has to be declared first. If no initial value is specified at declaration, the value becomes 'undefined'.
+      Variables declared with var are permanent: attempting to delete them with the delete operator causes an error.
+
+      Variables declared without the keyword var are called implicit variables. they are always declared as global variables, even if they are used within a body of a function.
+
+    Variable Scope:
+      A global variable has global scope. Variables defined within a function are defined only within the body of the function.
+      Functions definitions can be nested. Each functino has its own local scope, so it is possible to have several nested layers of local scope.
+
+      JS does not have block-level scope.
+
+    Garbage Collection:
+      It works behind the scene. One doesn't need to care about it.
+
+    Variables as Properties:
+      Is there any fundamental difference btw. the variable i and the property i of an object o? the answer is no.
+
+      The global object:
+        When the JS interpreter starts up, one of the first things it does, before executing any JS code, is create a globel object. the properties of this object are the global variables of JS programs. When a global JS variable is created, what actually is done, is defining a property of the global object.
+        In top-level code, the keyword this can be used to refer to the global object.
+
+        In client-sied (Browser) JS, the Window object serves as the global object for all JS code contained in the browser window it represents. This global Window object has a self-referential window property that can be used instead of this to refer to the global object.
+
+      Local Variables: The Call Object:
+        If global variables are properties of the special global object, then what are local variables? They too are properties of an object. This object is known as the call object. While a body of a function is executing, the function arguments and local variables are stored as properties of this call object.
+
+      JavaScript Execution Contexts:
+        Each time the JS interpreter begins to execute a function, it creates a new execution context for that function. An important part of the context is the object in which variables are defined. Thus, JS code that is not part of any function runs in an execution context that uses the global object for variable definitions. And every JS function runs in its own unique context with its own 'call object' in which local variables are defined.
+        JS implementations my allow multiple global execution contexts, each with a different global object. Like different tabs/windows in browsers.
+
+  Chapter 5. Expressions and Operators:
+
+    
+
 
 
