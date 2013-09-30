@@ -198,6 +198,120 @@ Part 1 Core JavaScript:
 
   Chapter 5. Expressions and Operators:
 
+
+
+  Chapter 7. Objects and Arrays:
+
+    7.1: Creating Objects:
+      An object is an unordered collection of properties, each of which has a name and a value.
+      The easiest way to create an object is to include an 'object literal' in your JavaScript code. An 'object literal' is a comma-separated list op property name/value pairs, enclosed within curly braces.
+
+        var empty = {};
+        var point = { x:0, y:0 };
+        var homer = {
+            "name": "Homer Simpson",
+            "age": 34,
+            "married": true
+        };
+
+      the 'new' operator can create specialized kind of objects. It is followed with an incocation of a constructor function that initializes the properties of the object.
+
+        var a = new Array();  // create an empty array
+
+    7.2 Object Properties:
+      A new property of an object is created by simply assigning a value to it. There is no way to declare properties with the 'var' keyword.
+
+      Enumerating Properties:
+        The for/in loop provides a way to loop through, or enumerate,the properties of an object.
+          for(var name in obj) names += name + "\n";
+
+        The for/in loop enumerates all user-defined properties, but is does not enumerate certain predefined properties or methods.
+
+      Deleting Properties:
+        The 'delete' operator can be used to delete a property of an object.
+
+          delete book.chapter2;
+
+    7.3 Object as Associative Array:
+      An objects property can be accessed through their identifier.
+
+        object.property;
+
+      Or, by the expressed as a sting.
+
+        object["property"];
+
+      Stings are JavaScript datatypes, so they can be manipulated and created while a progrma is running.
+
+        var addr = "";
+        for(i=0; i<4; i++) {
+            addr += customer["address" + i] + '\n';
+        }
+
+
+        var stock_name = get_stock_name_from_user();
+        var shares = get_number_of_shares();
+        protfolio[stock_name] = shares;
+
+      Since the user enters stock names at runtime, there is no way that you can know the property names ahead of time. Since you can't know the property names when you write the program, there is no way you can use the . operator to access the properties of the portfolio object. You can use the [] operator, however, because it uses a string value (which is cynamic and can change at runtime ) rather then an identifier (which is static and must be hardcoded in the program) to name the property.
+
+      An object used in this fashion is often called an 'associative array' or 'map'. 
+
+        var value = 0;
+        for(stock in portfolio) {
+            value += get_share_value(stock) * protfolio[stock];
+        }
+
+    7.4 Univarsal Object Properties and Methods:
+      All objects in JavaScript inherit from the Object class. the properties and methods of the Object class are, since their universality, particular interesting.
+
+      The constructor Property:
+        In JS, every object has a 'constructor' property that refers to the constructor function that initializes the object. 
+
+        toString(): represents the value of a object on which it is invoked.
+        toLocaleString(): returns the localized string representation of the object.
+        valueOf():aa
+        isPrototypeOf():
+
+    7.5 Arrays:
+      An Array is an ordered collection of values. Each value is called an element, and each element has a numeric position in teh array, known as its 'index'.
+      The easiest way to create an array is with an array literal
+
+        var empty = [];
+        var primes = [1,2,3,4,5];
+        var misc = [1.1, true, "abc"];
+
+      Or with an Array() constructor
+
+        var a = new Array();
+
+    7.7 Array methods:
+
+      join()    // converts all elements of an array to strings and concatenates them.
+      reverse()  // reverses the order of the elements of an array and returns the reversed array.
+
+      sort()  // sorts the elements of an array in place and returns the sorted array. When called with no arguments, it sorts the array elements in alphabetical order. A comare function can be passed to the sort method.
+
+        var a = [33, 4, 1111, 222];
+        a.sort();
+        a.sort(function(a,b) {
+            return a-b;
+        });
+
+      concat()  // concatenate two arrays
+
+      slice()  // return a slice, or subarray
+
+      splice()  //
+
+      push() pop()  // stack operations on arrays
+
+      shift() unshift() // like push() and pop() except from betinning not the end.
+
+Chapter 8. Functions:
+  A function is a block of JavaScript code that is defined once but may be invoked any number of times. When a function is invoked on an object, the function is called a method, and the object on which it is invoked is passed as an implicit argument of the function.
+
+  8.1. Defining and Invoking Functions:
     
 
 
