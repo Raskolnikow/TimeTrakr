@@ -312,7 +312,168 @@ Chapter 8. Functions:
   A function is a block of JavaScript code that is defined once but may be invoked any number of times. When a function is invoked on an object, the function is called a method, and the object on which it is invoked is passed as an implicit argument of the function.
 
   8.1. Defining and Invoking Functions:
+    The most common way to define a function is with the 'function' statement.
+
+      function f(x) {
+          return x*x;
+      }
+
+    A function may be invoked with the () operator.
+
+    Nested Functions:
+      Functions may be nested within other functinos.
+
+    Function Literals:
+      A function literal is an expression that defines an unnamed function. A function literal is used as an expression rather than as a statement. 
+
+        function f(x) { return x*x; }         // functions statement
+        var f = function(x) { return x*x; };  // function literal
+
+      Functions specified by a function literal exprssion ca be stored into variables, passed to another functino, or even invoked directly.
+
+        f[0] = function(x) { return x*x; };
+        a.sort(function(a,b) {return a-b;});
+        var tensquared = (function(x) {reuturn x*x;})(10);
+
+  8.2. Functions Arguments:
+    Within the body of a function, the identifier 'arguments' has special meaning. 'arguments' is a special property that refers to an object known as the Argument Object. The Arguments Object also defines an additional callee property. Since 'argument' is an array it has a 'length', that speciefies the number of elements it contains. function paramter defined in a function definition are called named paramters and are accesible by their name. Unnamed paramter, that were passed to the function are only accessible through the Argument object.
+
+    The callee Property allows an unnamed function to invoke themeself recursively.
+
+  8.3. Functions as Data:
+    In JavaScript functions are not only sysntax but also data, wich means taht they can be assigned to variables, stored in the proterties of objects ot rhe elements of arrays, passed as arguments to functions.
+
+      function square(x) { return x*x; }
+
+    This definition creates a new function object and assigns it to the variable square. The name of a function is really immaterial. it is simply the name of a variable that refers to the function. the function can be assigned to another variable and still work the same way.
+
+      var a = square(4);
+      var b = square;
+      var c = b(5);
+
+    functions can also be assigned to object properties rather than global variables. When this is done, they're called methods.
+
+      var o = new Object();
+      o.square = functions(x) { return x*x; }
+      y = o.square(16);
+
+    functions don't even require names at all, as when they're assigned to array elements.
+
+      var a = new Array(3);
+      a[0] = function(x) { return x*x; }
+      a[1] = 20;
+      a[2] = a[0](a[1]);
+
+  Functions as Methods:
+    A method is nothing more than a JavaScript function that is stored in a property of an object and invoked through that object. 
+
+    Methods have one very important property: the object throught which a method is invoked becomes the value of the this keyword within the body of the method. When a function is invoked as a function rather than as a method, the 'this' keyword refers to the global object. 
+
+8.6 Function Properties and Methods:
+  functions are really a specialized kind of JavaScript objects. Since functions are objects, they have properties and methods, just like the Date and RegExp objects, for example.
+
+  The prototype Property: Every function has a prototype property that refers to a predefined prototype object. this prototype object comes into play when the function is used as a constructor with the new operator. It plays an important role in the process of defining new object types. 
+
+  When a function needs to use avariable whose value persists across invocations, it is often convenient to use a property of the function object, instead of cluttering up the namespace by defineing a global variable.
+
+    uniqueInteger.counter = 0;
+
+    function uniqueInteger() {
+        return uniqueInteger.counter++;
+    }
+
+8.8 Function Scope and Closures:
+  The body of a JavaScript function executes in a local scope that differs from the global scope.
+
+  Lexical Scoping:
+    Functions in JS are lexically tather than dynamically scoped. this means that they run in the scope in which they are defined, not the scope from which they are executed. When a function is defined, the current scope chain is saved and becomes part of the internal state of the function. At the top level, the scope chain simply consists of the global object, and lexical scoping is not particularly relevant. When a nested function is defined, however, the scope chain includes the containing function. This means that nested functions ca access all of the arguments and local variables of the containing function.
+
+    Although the scope chain is fixed when a function is defined, the properties defined in that scope chain are not fixed. the scope chain is "live" and a function has access to whatever bindings are current when it is invoked.
+
+  The Call Object:
+    When the JS interpreter invokes a function, it fitst sets the scope to eht scope chain that was in effect when the function was defined. Next, it adds a new object, known as the call object to the front of the scope chain. The call object is initialized with the arguments object for the function. Named parameters of the function are added to the call object next. Any local variables declared with the var statement are also defined within this object. Since this call object is at the head of the scope chain, local variables, functin parameters, and the Argument object are all in scope wiehtin the function. this also menas that they hide any properties with the same name that are further up the scope chain.
+
+  The Call Object as a Namespace:
+    It is sometimes useful to define a function simply to create a call object that acts as a temporary namespace in which you can define variables and create properties without corrupting the global namespcae.
+    the solution is to put the code into a function and then invoke the function. This way, variables are defined in the call object of the function.
+
+    (function() {
+        // code goes here
+    })();  // end the function literal and invoke it now.
+
+  Nested functions and closures:
+    The fact that JavaScript allows nested functions, allows functions to be used as data, and uses lexical scoping interact to create surprising and powerful effects.
+
+
+
+  The functions() constructor:
+    functions ca be constructed be using the Function() constructor.
+
+      var f = new Function("x", "y", "return x*y;");
+
+    The Function() constructor creates anonymous functions.
+
+    - the Function() constructor allows JavaScript code to be dynamically created and compiled at runtime.
+
+Chapter 9. classes, Constuctors, and Prototypes:
+  JavaScript does not support true classes the way that languages like Java, C++ do. Still, however, it is possible to define pseudoclasses in JavaScript. the tools for doing this are constructor functions and prototype objects.
+
+  9.1. Constructors:
+    The 'new' operator must be followed by a function invocation. It creates a new object, with no properties and then invokes the function, passing the new object as the value of the 'this' keyword. A function designed to be used with the new operator is called a constructor function or simply a constructor.
+    A constructor function can be defined simply by writing a function that adds properties to 'this'.
+
+      function Rectangle(w, h) {
+          this.width = w;
+          this.height = h;
+      }
+
+      var rect1 = new Rectangle(2,4);
+
+  9.2 Prototypes and Inheritance:
+    When using objects, it it better to invoke a mothod on the object rather than passing the object to a function.
+
+      var r = new Rectangle(6, 7);
+      r.area = function() { return this.width * this.height; }
+
+      var a = r.area();
+
+    this situation can be approved by initializing the area property to refer to the area computing function in the constructor.
+
+      function Rectangle(w, h) {
+          this.width = w;
+          this.height = h;
+          this.area = function() { return this.width * this.height; }
+      }
+
+    This solution isn't optimal though. It is inefficient to use regular properties for methods that are intended to be shared by all objects of the same class.
+
+    Every JavaScript object include an internal reference to another object, known as its prototype object. JavaScript object inherits properties from its prototype.
+
+    After creating a empty object, 'new' sets the prototype of that object. The prototype of an object is the value of the prototype property of its constructor function. The prototype is a property of the constructor function. All functions have a prototype property that is automatically created and initialized when the function is defined. the initial value of the prototype property is an object with a single property. this property is named constructor and refers back to the constructor function with which the prototype is associated. 
+
+      function Rectangle(w, h) {
+          this.width = w;
+          this.height = h;
+      }
+
+      Rectangle.prototype.area = function() { return this.width * this.height;}
+
+    The prototype object is associated with the constructor, and each object initialized by the constructor inherits exactly the same set of properties from the prototype. this means that the prorotype object is an ideal place for methods and other constant properties.
+
+    Reading and Writing inherited Propeties:
+      Property inheritance occurs only when you read property values, not when you write them. If a property p in an object o, that inherits p from its prototype, is set, what happens is that a new property is created directly in o. We sometimes say that the property p in o "shadows" or "hides" the property in the prototype object. 
+
+      Because prototype properties are shared by all objects, makes them an ideal place to define methods.
+
+  9.3. Simulating Classes in JavaScript:
     
+
+
+
+
+
+
+
 
 
 
