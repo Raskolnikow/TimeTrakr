@@ -1,0 +1,130 @@
+Chapter 2:
+
+  Introducing the event-driven programming style:
+    Event-driven programming is a programming style wherby the flow of execution is determined by events. Events are handled by event handlers or event callbacks. An event callback is a function that is invoked when something significant happens - such as when the resut of a database query is available or when the user clicks on a button. 
+
+    The style of progrmming - whereby instead of using a return value you define functions that are called by the system when interesting events occur - is called 'event-driven' or 'asynchronous' programming. This style of programming means the current process will not block when it is doing I/O. Therefore, several I/O operations can occur in paralel, and each respective callback function will be invoked when the operation finishes.
+
+  How node and javascript make writing asynchronous applications easier:
+    JavaScript has closures and first-class functions, which makes it a powerful match for event-driven programming.
+
+    What are closures: Closures are functions that inherit variables from their enclosing environment. When a function callback is passed as an argument to another function that will do I/O, this calback function will be invoked later, and this function wil remember the context in which it was declared, along with all the variables available in that context and any parent contexts.
+
+    In event-driven programming you start by defining the code that will be executed when an event occurs, then put that code inside a function, and finally pass that function as an argument to be called later. 
+    In JavaScript, a function operates not by working in isolation but by remembering the context where it was declared, which enables manipulation of any variable present in that or any other context.
+
+    This shows that by using the closure pattern, you can have the best of both worlds: You can do event-driven progrmming without having to maintain the state by passing it around to functions. A JavaScript closure keeps the state for you.
+
+
+Part II: Node Core API Basics:
+
+Chapter 3: Loading Modules:
+  Node implements the CommonJS modules standard. In this standard each module has its own context, separated from the other modules.
+
+  In Node, modules are referenced either by file path or by name. 
+
+  To use a module of any type, you have to use the require function like this
+
+    var module = require('module_name');
+
+  The 'require' function returns an object that represents the JavaScript API exposed by the module. 
+
+  Exporting a module:
+    The CommonJS module is the only way you can share objects or functions among files in Node. In Node, files and modules are in one-to-one correspondence.
+
+Chapter 4: Using Buffers to Manipulate, Encode, and Decode Binary Data:
+  JavaScript doesn't have a byte type or structured types, or even byte arrays: It just has strings.
+  To make binary-handling tasks easier, Node includes a binary buffer implementation, which is exposed as a JavaSctipt API under the Buffer pseudo-class. A buffer length is specified in bytes, and you can randomly set and get bytes from a buffer.
+
+    - The memory where the data sits is allocated outside of the JavaScript VM memory heap. this means that these objects will not be moved around by the garbage-collection algorithm. -
+
+  Creating a Buffer:
+
+    A buffer can be created from a UTF-8-encoded string
+
+      var buf = new Buffer('Hello World!');
+
+    Or by specifying the length
+
+      var buf = new Buffer(1024);    // creating a 1024 byte buffer
+
+  Getting and setting bytes in a buffer:
+    The individual bytes in a buffer can be accessed with the [] operator.
+
+      var buf = new Buffer('my buffer content');
+      console.log(buf[10]);    // -> 99
+
+      bur[99] = 125;
+
+    If you try to assign a position that is out of bounds, the assignment will fail and the buffer will remain unaltered.
+
+      buf.length;    // length of the buffer
+
+  Slicing a buffer:
+    A buffer can be sliced to create another smaller buffer, specifying the starting and ending position like this.
+
+      var buffer = new Buffer("this is the content of my buffer");
+      var smallerBuffer = buffer.slice(8, 19);
+      console.log(smallerBuffer.toString());    // -> "the content"
+
+    By slicing a buffer no new memory is allocated and nothing is copied. The new Buffer uses the parent buffer memory and just references different start and/or end positions.
+
+  Copying a buffer:
+    Buffer can be copyied to another buffer by using the copy method.
+
+      var buffer1 = new Buffer("this is the content of my buffer");
+      var buffer2 = new Buffer(11);
+
+      var targetStart = 0;
+      var sourceStart = 8;
+      var sourceEnd = 19;
+
+      buffer1.copy(buffer2, targetStart, sourceStart, sourceEnd);
+      console.log(buffer2.toString());    // -> "the content"
+
+Chapter 5: Using the Event Emitter Pattern to Symplify Event Binding:
+  In Node many objects emit events. These objects are, in Node nomenclature, 'event emitters'. Event emitters allow programmers to subscribe to events they are interested in. Node supplies an EventEmitter pseudoclass that can work as a base for creating own event emitters.
+
+  Understanding the standard callback pattern:
+    Asynchonous progrmming does not use function return values to denote that a function is finished. Instead it uses the continuation-passing style (CPS). This is a style in which a function invokes a callback after the operation is complete.
+
+  Understanding the event emitter pattern:
+    The standard callback pattern - whereby you pass a callback function as an argument of the function you are executing - works well when you want the client to be notified when a function completes. But if several events take place during execution, or if they happen several times, this style doesn't work as well. this is where the event emitter pattern comes in, as in this example.
+
+      var req = http.request(options, function(response) {
+          response.on("data", function(data) {
+              console.log("some data from the response", data);
+          });
+          response.on("end", function() {
+              console.log("response ended");
+          });
+      });
+      req.end();
+
+    When complete, the http.request function invokes the callback, passing a response object. This response object is an event emitter and, according to the Node documentation, can emit, among others, the data and end events. You are then registering callback functions that will be invoked every time any of these events happen.
+
+  Understanding event types:
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
