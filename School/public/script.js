@@ -59,7 +59,31 @@ function btnDecimal() {
 	base = 10;
 }
 
-function ss() {
+function trackTime() {
+	var time_out = document.getElementById("time_output");
+
+	time_out.innerHTML = (Math.random() * 100).toFixed();
+}
+
+function showtime() {
+
+	var time_out = document.getElementById("time_output");
+
+
+	var now = new Date();
+	var h = now.getHours();
+	var m = now.getMinutes();
+
+	if(h < 10) h = '0' + h.toString();
+	if(m < 10) m = '0' + m.toString();
+
+	time_out.innerHTML = h + ':' + m;
+}
+
+
+window.setInterval(showtime, 10000);
+
+/*function ss() {
 	window.setInterval(output, 100);
 
 	var w = window.open();
@@ -67,7 +91,7 @@ function ss() {
 	d.open();
 	d.write("<h1>Hello World!</h1>");
 	d.close();
-}
+}*/
 
 
 

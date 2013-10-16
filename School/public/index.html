@@ -5,54 +5,33 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="script.js"></script>
 
-	<body onload="ss()">
+	<body onload="showime()">
 		<title>Time Trakr</title>
 
 <div id="allcontent">
 		<div id="header">TimeTrakr</div>
 
-		<div id="sidebarL">
-			<p>
-				<ol>
-					<li>Rot</li>
-					<li>Gruen</li>
-					<li>Blau</li>
-					<li>Orange</li>
-					<li>Weiss</li>
-					<li>Schwarz</li>
-					<li>Braun</li>
-					<li>Braun</li>
-					<li>Braun</li>
-				</ol>
+		<div id="content">
+			<div id="start_btn" onclick="trackTime()">
+				START
+			</div>
 
-				<!--<a href="next.html"><span class="link">GO!!</span></a> -->
-			</p>	
+			<div id="time_output"></div>
 		</div>
 
-		<div id="sidebarR">
-			<table>
-				<tr>
-					<td>Binary</td>
-					<td><button class="btn" onclick="btnBinary()">Click</button></td>
-				</tr>
-				<tr>
-					<td>Octal</td>
-					<td><button onclick="btnOctal()">Click</button></td>
-				</tr>
-				<tr>
-					<td>Hex</td>
-					<td><button onclick="btnHex()">Click</button></td>
-				</tr>
-				<tr>
-					<td>Decimal</td>
-					<td><button onclick="btnDecimal()">Click</button></td>
-				</tr>
-			</table>
+		<div id="footer">
+			<span id="foot_left">
+				Home
+			</span>
+
+			<span id="foot_center">
+				Stats
+			</span>
+
+			<span id="foot_right">
+				Config
+			</span>
 		</div>
-
-		<div id="content"></div>
-
-		<div id="footer">Tool for tracking worktime</div>
 </div>
 		
 
