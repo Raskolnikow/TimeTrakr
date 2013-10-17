@@ -83,7 +83,7 @@ caption {
 }
 
 #content {
-	height: 870px;
+	height: 1050px;
 	font-size: 15px;
 	/*background-color: #007aff;*/
 	/*border-radius: 10px;
@@ -95,7 +95,7 @@ caption {
 	color: #555555;
 
 	padding: 10px;
-	margin-top: 50px;
+	margin-top: 150px;
 }
 
 #start_btn {
@@ -107,7 +107,7 @@ caption {
 
 
 
-	padding: 70px 50px 50px 70px;
+	padding: 50px 50px 50px 70px;
 
 	margin-top: 30px;
 	margin-left: auto;
@@ -148,7 +148,7 @@ border-style: solid;*/
 
 	font-size: 300px;
 
-	padding: 20px 0px 0px 0px;
+	padding: 40px 0px 0px 0px;
 
 	border-width: 1px 0px 0px 0px;
 	border-color: #232323;
@@ -156,7 +156,7 @@ border-style: solid;*/
 
 	/*border-radius: 40px;*/
 
-	margin-top: 80px;
+	margin-top: 140px;
 	margin-left: 80px;
 	margin-right: 80px;
 }

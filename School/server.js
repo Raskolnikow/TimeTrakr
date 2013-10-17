@@ -20,28 +20,37 @@ app.use(function(req, res) {
 
 // ---------------------- DataBase Code ---------------------------
 
-var couchdb = nano('https://trakr.iriscouch.com');
-var kaiserDB = couchdb.use('kaiser');
+var couchdb = nano('http://127.0.0.1:5984');
 
 
-/*kaiserDB.insert({"when" : Date()}, function(err) {
+/*couchdb.db.create('kaiser', function(err) {
 	if(err) {console.error(err);}
 });*/
 
-var couchMapReduceFunc = function(doc) {
-	emit([doc.when], doc);
+var kaiserDB = couchdb.use('kaiser');
+
+/*var js = {
+	"date" : Date.now(),
+	"items": ["apple", "orange", "kiwi"]
+};
+
+kaiserDB.insert(js, function(err) {
+	if(err) {console.error(err);}
+});*/
+
+/*var couchMapReduceFunc = function(doc) {
+	emit([doc.date], doc);
 }
 
 var designDoc = {
-	language: "Javascript",
-	views: {
-		by_room: {
-			map: couchMapReduceFunc.toString()
+	"views": {
+		"by_date": {
+			"map": couchMapReduceFunc.toString()
 		}
 	}
 };
 
-/*(function insertOrUpdateDesignDoc() {
+(function insertOrUpdateDesignDoc() {
 	kaiserDB.insert(designDoc, '_design/designdoc', function(err) {
 		if(err) {
 			if(err.status_code === 409) {
@@ -60,13 +69,13 @@ var designDoc = {
 
 function getData() {
 	var getOptions = {
-		start_key: JSON.stringify(['when', 0]),
-		end_key: JSON.stringify(['when', 0]),
-		limit: 10,
+		/*start_key: JSON.stringify(['date', date]),
+		end_key: JSON.stringify(['date', date]),
+		limit: 10,*/
 		descending: true
 	};
 
-	kaiserDB.get('_design/designdoc/_view/by_room', getOptions, function(err, result) {
+	kaiserDB.get('_design/designdoc/_view/by_date', getOptions, function(err, result) {
 		if(err) { console.log(err); return; }
 		
 		var messages = result.rows.reverse().map(function(res) {
@@ -77,13 +86,6 @@ function getData() {
 }
 
 getData();
-
-
-
-/*couchdb.db.create('kaiser', function(err) {
-	if(err) {console.error(err);}
-	var kaiserDB = couchdb.use('kaiser');
-});*/
 
 // ---------------------------------------------------------------
 
