@@ -3,6 +3,7 @@ var helloWorld = require('./hello_world');
 
 var app = connect();
 
+
 // setup logger middleware
 app.use(connect.logger(':method :req[content-type]'));
 // setup the static file server
@@ -13,6 +14,7 @@ app.use(connect.bodyParser());
 
 app.use(function(req, res) {
 	res.end(JSON.stringify(req.body));
+	console.log(JSON.stringify(req.body));
 });
 
 app.use(helloWorld);
