@@ -47,3 +47,13 @@ require('http').createServer(function(req, res) {
 	var rs = fs.createReadStream('test.mov');
 	rs.pipe(res);
 }).listen(4000);
+
+
+// ---------------------- JSON Format --------------------------
+
+{
+	date: 09-09-2013,
+	start_time: 08:45,
+	end_time: 16:50,
+	breaks: 45
+}
