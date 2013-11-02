@@ -10,6 +10,10 @@ var dbConfig = {
 var dao = new DataAccessObject(dbConfig);
 
 var now = new Date();
+now.setDate(1);
+
+//console.log(now);
+
 //var date = d.toLocaleDateString();
 //var date = "Sunday, October 27, 2013";
 

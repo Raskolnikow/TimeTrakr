@@ -41,13 +41,12 @@ function DataAccesObject(config) {
 		return ( h + ":" + m );
 	}
 
-	function putNewEntry() {
-		var now = new Date();
+	function putNewEntry(date) {
 
 		var data = {
-			date: now.toLocaleDateString(),
-			start_time: toMinutes(now),
-			end_time: toMinutes(now),
+			date: date.toLocaleDateString(),
+			start_time: toMinutes(date),
+			end_time: toMinutes(date),
 			breaks: 0
 		};
 
@@ -71,28 +70,55 @@ function DataAccesObject(config) {
 		db.get(dbConfig.view, getOptions, function(err, result) {
 			if(err) { console.log(err); return; };
 
+			var dat;
+
 			if(result.rows.length != 0) {
 				var res = result.rows[0].value;
 
-				var dat = {
+				dat = {
 
 					date: res.date,
 					start: toTimeString(res.start_time),
 					end: toTimeString(res.end_time),
 					breaks: toTimeString(res.breaks)
 				};
+			}
 
-				func(dat);
+			func(dat);
+			//console.log(result.rows.length);
+		});
+	}
+
+	function _getEntry(date, func) {
+
+		var s_key = JSON.stringify(date.toLocaleDateString());
+		var e_key = JSON.stringify(date.toLocaleDateString());
+
+		var getOptions = {
+			start_key: s_key,
+			end_key: e_key,
+			limit: 10,
+			descending: true
+		};
+
+		db.get(dbConfig.view, getOptions, function(err, result) {
+			if(err) { console.log(err); return; };
+
+			if(result.rows.length != 0) {
+				func(result.rows[0].value);
+			}
+			else {
+				func();
 			}
 		});
 	}
 
 	function updateEntry(date, start, func) {
 
-		getEntry(date, function(data) {
+		_getEntry(date, function(data) {
 			if(data == null) {
-				putNewEntry();
-				updateEntry(date, func);
+				console.log("Inserting new Data!!");
+				putNewEntry(date);
 			} else {
 				if(start) {
 					data.breaks += (toMinutes(date) - data.end_time);
