@@ -27,13 +27,21 @@ function DataAccesObject(config) {
 	var couch = nano(dbConfig.uri + ":" + dbConfig.port);
 	var db = couch.use(dbConfig.database);
 
+	function toMinutes(date) {
+		return (date.getHours() * 60 + date.getMinutes());
+	}
+
+	function toTimeString(min) {
+		return (min/60 + ":" + (min - Math.floor(min/60)) + ":00").toString();
+	}
+
 	function putNewEntry() {
 		var now = new Date();
 
 		var data = {
 			date: now.toLocaleDateString(),
-			start_time: now.toLocaleTimeString(),
-			end_time: now.toLocaleTimeString(),
+			start_time: toMinutes(now),
+			end_time: toMinutes(now),
 			breaks: 0
 		};
 
@@ -42,12 +50,10 @@ function DataAccesObject(config) {
 		})	
 	}
 
-	function getEntry(date) {
+	function getEntry(date, func) {
 
 		var s_key = JSON.stringify(date);
 		var e_key = JSON.stringify(date);
-
-		var data = {};
 
 		var getOptions = {
 			start_key: s_key,
@@ -57,36 +63,42 @@ function DataAccesObject(config) {
 		};
 
 		db.get(dbConfig.view, getOptions, function(err, result) {
+			if(err) { console.log(err); return; };
 
-			if(err) { console.log(err); return; }
-
-			data.date = result.rows[0].key;
-			data.s_time = result.rows[0].value.start_time;
-			data.e_time = result.rows[0].value.end_time;
-			data.breaks = result.rows[0].value.breaks;
-			
-			/*var messages = result.rows.reverse().map(function(res) {
-				return res.value;
-			});
-			console.log(messages.length);
-			console.log(messages);*/
-
-			//return data;
+			if(result.rows.length != 0) {
+				func(result.rows[0].value);
+			}
 		});
-
-		return data;
 	}
 
-	function updateEntry(date, time) {
+	function updateEntry(date, time, start, func) {
 
 		// 1. find Entry
 		// IF NOT FIND: create new entry 
 		// ELSE: update Entry ( record stop_time, calc break minutes)
+
+		getEntry(date, function(data) {
+			if(data == null) {
+				putNewEntry();
+				updateEntry(date, time, func);
+			} else {
+				if(start) {
+					data.breaks = toMinutes(time) - data.end_time;
+				} else {
+					data.end_time = toMinutes(time);
+				}
+
+				db.insert(data, function(err) {
+					if(err) { console.log(err); }
+				});
+			}
+		});
 	}
 
 	return {
 		newEntry: putNewEntry,
-		getEntry: getEntry
+		getEntry: getEntry,
+		updateEntry: updateEntry
 	};
 }
 

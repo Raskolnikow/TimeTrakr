@@ -11,7 +11,14 @@ var dao = new DataAccessObject(dbConfig);
 
 var d = new Date();
 var date = d.toLocaleDateString();
+//var date = "Sunday, October 27, 2013";
 
-console.log(date);
-console.log(dao.getEntry(date));
-//console.log(dao.getEntry("Sunday, October 27, 2013"));
+//dao.updateEntry(date, '11:00:00', true);
+
+dao.getEntry(date, function(data) {
+	console.log(data);
+});
+
+//dao.newEntry();
+
+
