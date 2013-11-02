@@ -89,10 +89,6 @@ function DataAccesObject(config) {
 
 	function updateEntry(date, start, func) {
 
-		// 1. find Entry
-		// IF NOT FIND: create new entry 
-		// ELSE: update Entry ( record stop_time, calc break minutes)
-
 		getEntry(date, function(data) {
 			if(data == null) {
 				putNewEntry();
