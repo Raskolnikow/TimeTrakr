@@ -13,7 +13,7 @@ var d = new Date();
 var date = d.toLocaleDateString();
 //var date = "Sunday, October 27, 2013";
 
-//dao.updateEntry(date, '11:00:00', true);
+dao.updateEntry(date, '21:00:00', false);
 
 dao.getEntry(date, function(data) {
 	console.log(data);
