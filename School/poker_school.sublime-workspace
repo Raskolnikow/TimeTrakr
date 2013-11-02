@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"ret",
+				"return"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"v",
+				"value"
+			],
+			[
+				"res",
+				"res_json"
+			],
+			[
+				"end_",
+				"end_time"
+			],
+			[
+				"start",
+				"start_time"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
 				"db",
 				"dbConfig"
 			],
@@ -120,26 +148,50 @@
 			}
 		},
 		{
-			"file": "snippets.js",
-			"settings":
-			{
-				"buffer_size": 1298,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "new_data.js",
 			"settings":
 			{
-				"buffer_size": 1151,
+				"buffer_size": 1821,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "time.js",
+			"file": "test_new_data.js",
 			"settings":
 			{
-				"buffer_size": 203,
+				"buffer_size": 382,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "new_view.js",
+			"settings":
+			{
+				"buffer_size": 734,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "get_data.js",
+			"settings":
+			{
+				"buffer_size": 668,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "circle.js",
+			"settings":
+			{
+				"buffer_size": 188,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "circ_test.js",
+			"settings":
+			{
+				"buffer_size": 88,
 				"line_ending": "Windows"
 			}
 		},
@@ -148,22 +200,6 @@
 			"settings":
 			{
 				"buffer_size": 763,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/style.css",
-			"settings":
-			{
-				"buffer_size": 2633,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/script.js",
-			"settings":
-			{
-				"buffer_size": 864,
 				"line_ending": "Windows"
 			}
 		}
@@ -212,6 +248,11 @@
 	},
 	"file_history":
 	[
+		"/D/abgleich_vs/Mathe_VB/Fifty Fifty/Fifty Fifty V1/SimuDat.bak",
+		"/D/privat/Projekte/TimeTrakr/School/snippets.js",
+		"/D/privat/Projekte/TimeTrakr/School/public/script.js",
+		"/D/privat/Projekte/TimeTrakr/School/public/style.css",
+		"/D/privat/Projekte/TimeTrakr/School/time.js",
 		"/T/LogFiles/errorlog.bin",
 		"/T/WorkDir/GOC/REEST.GOC",
 		"/D/privat/Projekte/TimeTrakr/src/public/index.html",
@@ -240,6 +281,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"res_json",
+			"kaiserDB",
 			"span",
 			"div",
 			"span"
@@ -260,7 +303,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -276,8 +319,8 @@
 						"selection":
 						[
 							[
-								1734,
-								1734
+								1422,
+								1422
 							]
 						],
 						"settings":
@@ -285,7 +328,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 551.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -303,8 +346,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								1244,
+								1244
 							]
 						],
 						"settings":
@@ -321,25 +364,51 @@
 				},
 				{
 					"buffer": 2,
-					"file": "snippets.js",
+					"file": "new_data.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1298,
+						"buffer_size": 1821,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1226,
-								1298
+								1367,
+								1367
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 450.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "test_new_data.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 382,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								327,
+								327
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -348,20 +417,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "new_data.js",
+					"buffer": 4,
+					"file": "new_view.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1151,
+						"buffer_size": 734,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1059,
-								1059
+								107,
+								107
 							]
 						],
 						"settings":
@@ -369,26 +438,26 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "time.js",
+					"buffer": 5,
+					"file": "get_data.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 203,
+						"buffer_size": 668,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								203,
-								203
+								402,
+								418
 							]
 						],
 						"settings":
@@ -403,7 +472,61 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
+					"file": "circle.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								188,
+								188
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "circ_test.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 88,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								87,
+								87
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "public/index.html",
 					"semi_transient": false,
 					"settings":
@@ -422,62 +545,6 @@
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "public/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2633,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2401,
-								2401
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 900.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "public/script.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 864,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								864,
-								864
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
