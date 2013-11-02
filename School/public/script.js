@@ -10,15 +10,18 @@ function trackTime() {
 			if(ajax.status == 200) {
 				var res = eval("(" + ajax.responseText + ")");
 
-				time_out.innerHTML = res.time;
+				//document.cookie = "end_time=" + res;
+				time_out.innerHTML = res;
 			}
 		}
 	}
 
-	ajax.open("POST", "192.168.172.39:8080");
+	ajax.open("POST", "192.168.172.32:8080");
 	ajax.setRequestHeader("Content-Type", "application/json");
 
-	ajax.send(JSON.stringify({"time" : getTime()}));
+	var now = new Date();
+
+	ajax.send(JSON.stringify({"now" : now.getTime()}));
 }
 
 function showtime() {

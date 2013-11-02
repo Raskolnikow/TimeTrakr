@@ -129,6 +129,8 @@ function DataAccesObject(config) {
 				db.insert(data, function(err) {
 					if(err) { console.log(err); }
 				});
+
+				
 			}
 		});
 	}
