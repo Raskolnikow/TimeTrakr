@@ -9,13 +9,14 @@ var dbConfig = {
 
 var dao = new DataAccessObject(dbConfig);
 
-var d = new Date();
-var date = d.toLocaleDateString();
+var now = new Date();
+//var date = d.toLocaleDateString();
 //var date = "Sunday, October 27, 2013";
 
-dao.updateEntry(date, '21:00:00', false);
+//dao.updateEntry(now, true);		// start
+//dao.updateEntry(now, false);		// stop
 
-dao.getEntry(date, function(data) {
+dao.getEntry(now, function(data) {
 	console.log(data);
 });
 

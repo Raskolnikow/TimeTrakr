@@ -32,7 +32,13 @@ function DataAccesObject(config) {
 	}
 
 	function toTimeString(min) {
-		return (min/60 + ":" + (min - Math.floor(min/60)) + ":00").toString();
+		var h = (min/60).toFixed();
+		var m = (min - Math.floor(min/60)*60);
+
+		if(h < 10) h = "0" + h;
+		if(m < 10) m = "0" + m;
+
+		return ( h + ":" + m );
 	}
 
 	function putNewEntry() {
@@ -52,8 +58,8 @@ function DataAccesObject(config) {
 
 	function getEntry(date, func) {
 
-		var s_key = JSON.stringify(date);
-		var e_key = JSON.stringify(date);
+		var s_key = JSON.stringify(date.toLocaleDateString());
+		var e_key = JSON.stringify(date.toLocaleDateString());
 
 		var getOptions = {
 			start_key: s_key,
@@ -66,26 +72,32 @@ function DataAccesObject(config) {
 			if(err) { console.log(err); return; };
 
 			if(result.rows.length != 0) {
-				func(result.rows[0].value);
+				var res = result.rows[0].value;
+
+				var dat = {
+
+					date: res.date,
+					start: toTimeString(res.start_time),
+					end: toTimeString(res.end_time),
+					breaks: toTimeString(res.breaks)
+				};
+
+				func(dat);
 			}
 		});
 	}
 
-	function updateEntry(date, time, start, func) {
-
-		// 1. find Entry
-		// IF NOT FIND: create new entry 
-		// ELSE: update Entry ( record stop_time, calc break minutes)
+	function updateEntry(date, start, func) {
 
 		getEntry(date, function(data) {
 			if(data == null) {
 				putNewEntry();
-				updateEntry(date, time, func);
+				updateEntry(date, func);
 			} else {
 				if(start) {
-					data.breaks = toMinutes(time) - data.end_time;
+					data.breaks += (toMinutes(date) - data.end_time);
 				} else {
-					data.end_time = toMinutes(time);
+					data.end_time = toMinutes(date);
 				}
 
 				db.insert(data, function(err) {
